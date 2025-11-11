@@ -2,6 +2,7 @@ import "./index.css";
 import { useState } from "react";
 import Display from "./components/Display";
 import Keypad from "./components/Keypad";
+import { evaluate } from "mathjs"; // ← أضف السطر ده
 
 function App() {
   const [display, setDisplay] = useState("0");
@@ -19,7 +20,7 @@ function App() {
 
     if (value === "=") {
       try {
-        const result = eval(display);
+        const result = evaluate(display); // ← استخدم evaluate من mathjs
         setDisplay(result.toString());
       } catch {
         setDisplay("Error");
